@@ -1,7 +1,42 @@
 import 'package:flutter/material.dart';
 
-class GuidePage extends StatelessWidget {
-  const GuidePage({Key? key}) : super(key: key);
+class GuidePage extends StatefulWidget {
+  final bool isLoggedIn;
+
+  const GuidePage({Key? key, this.isLoggedIn = false}) : super(key: key);
+
+  @override
+  _GuidePageState createState() => _GuidePageState();
+}
+
+class _GuidePageState extends State<GuidePage> {
+  int _selectedIndex = 4; // Asumsikan Guide adalah tab ke-4
+
+  void _onItemTapped(int index) {
+    if (index == _selectedIndex) return; // Jika sudah di tab yang sama, tidak perlu navigasi ulang
+
+    setState(() {
+      _selectedIndex = index;
+    });
+
+    switch (index) {
+      case 0:
+        Navigator.pushReplacementNamed(context, '/');
+        break;
+      case 1:
+        Navigator.pushReplacementNamed(context, '/monitoring');
+        break;
+      case 2:
+        Navigator.pushReplacementNamed(context, '/user');
+        break;
+      case 3:
+        Navigator.pushReplacementNamed(context, '/report');
+        break;
+      case 4:
+        Navigator.pushReplacementNamed(context, '/guide');
+        break;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -146,7 +181,7 @@ class GuidePage extends StatelessWidget {
               child: ElevatedButton(
                 onPressed: () {
                   // Logika untuk kembali ke halaman utama
-                  Navigator.pop(context);
+                  Navigator.pushReplacementNamed(context, '/');
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.teal,
@@ -163,6 +198,35 @@ class GuidePage extends StatelessWidget {
             ),
           ],
         ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.monitor),
+            label: 'Monitoring',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.people),
+            label: 'User',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.report),
+            label: 'Report',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.help),
+            label: 'Guide',
+          ),
+        ],
+        currentIndex: _selectedIndex,
+        selectedItemColor: Colors.teal,
+        unselectedItemColor: Colors.grey,
+        onTap: _onItemTapped,
+        type: BottomNavigationBarType.fixed, // Untuk menampilkan semua label
       ),
     );
   }

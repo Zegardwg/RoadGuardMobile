@@ -1,7 +1,37 @@
 import 'package:flutter/material.dart';
 
-class ReportPage extends StatelessWidget {
+class ReportPage extends StatefulWidget {
   const ReportPage({Key? key}) : super(key: key);
+
+  @override
+  _ReportPageState createState() => _ReportPageState();
+}
+
+class _ReportPageState extends State<ReportPage> {
+  int _selectedIndex = 3; // Set the default index to the 'Report' page
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+    switch (index) {
+      case 0:
+        Navigator.pushReplacementNamed(context, '/');
+        break;
+      case 1:
+        Navigator.pushReplacementNamed(context, '/monitoring');
+        break;
+      case 2:
+        Navigator.pushReplacementNamed(context, '/user');
+        break;
+      case 3:
+        Navigator.pushReplacementNamed(context, '/report');
+        break;
+      case 4:
+        Navigator.pushReplacementNamed(context, '/guide');
+        break;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +47,6 @@ class ReportPage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              // Header Section
               Container(
                 padding: const EdgeInsets.all(16),
                 decoration: BoxDecoration(
@@ -50,10 +79,7 @@ class ReportPage extends StatelessWidget {
                   ],
                 ),
               ),
-
               const SizedBox(height: 16),
-
-              // Statistik Ringkas
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -62,10 +88,7 @@ class ReportPage extends StatelessWidget {
                   _buildStatCard('Sudah Diperbaiki', '30', Colors.green),
                 ],
               ),
-
               const SizedBox(height: 16),
-
-              // Daftar Laporan
               const Text(
                 'Daftar Laporan',
                 style: TextStyle(
@@ -78,7 +101,7 @@ class ReportPage extends StatelessWidget {
               ListView.builder(
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
-                itemCount: 5, // Replace with actual data count
+                itemCount: 5,
                 itemBuilder: (context, index) {
                   return _buildReportItem(
                     title: 'Lubang Jalan ${index + 1}',
@@ -94,6 +117,34 @@ class ReportPage extends StatelessWidget {
             ],
           ),
         ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.monitor),
+            label: 'Monitoring',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.people),
+            label: 'User',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.report),
+            label: 'Report',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.help),
+            label: 'Guide',
+          ),
+        ],
+        currentIndex: _selectedIndex,
+        selectedItemColor: Colors.teal,
+        unselectedItemColor: Colors.grey,
+        onTap: _onItemTapped,
       ),
     );
   }

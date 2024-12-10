@@ -1,7 +1,37 @@
 import 'package:flutter/material.dart';
 
-class UserPage extends StatelessWidget {
+class UserPage extends StatefulWidget {
   const UserPage({Key? key}) : super(key: key);
+
+  @override
+  _UserPageState createState() => _UserPageState();
+}
+
+class _UserPageState extends State<UserPage> {
+  int _selectedIndex = 2; // Set default to 'User'
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+    switch (index) {
+      case 0:
+        Navigator.pushReplacementNamed(context, '/');
+        break;
+      case 1:
+        Navigator.pushReplacementNamed(context, '/monitoring');
+        break;
+      case 2:
+        Navigator.pushReplacementNamed(context, '/user');
+        break;
+      case 3:
+        Navigator.pushReplacementNamed(context, '/report');
+        break;
+      case 4:
+        Navigator.pushReplacementNamed(context, '/guide');
+        break;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +59,7 @@ class UserPage extends StatelessWidget {
                 children: [
                   CircleAvatar(
                     radius: 50,
-                    backgroundImage: AssetImage('assets/user_avatar.png'),
+                    backgroundImage: AssetImage('web/assets/python.png'),
                   ),
                   const SizedBox(height: 16),
                   const Text(
@@ -155,6 +185,34 @@ class UserPage extends StatelessWidget {
             ),
           ],
         ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.monitor),
+            label: 'Monitoring',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.people),
+            label: 'User',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.report),
+            label: 'Report',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.help),
+            label: 'Guide',
+          ),
+        ],
+        currentIndex: _selectedIndex,
+        selectedItemColor: Colors.teal,
+        unselectedItemColor: Colors.grey,
+        onTap: _onItemTapped,
       ),
     );
   }

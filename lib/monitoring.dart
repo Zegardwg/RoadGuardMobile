@@ -1,8 +1,37 @@
 import 'package:flutter/material.dart';
 
-
-class MonitoringPage extends StatelessWidget {
+class MonitoringPage extends StatefulWidget {
   const MonitoringPage({Key? key}) : super(key: key);
+
+  @override
+  _MonitoringPageState createState() => _MonitoringPageState();
+}
+
+class _MonitoringPageState extends State<MonitoringPage> {
+  int _selectedIndex = 1; // Set to 1 because this is the Monitoring page
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+    switch (index) {
+      case 0:
+        Navigator.pushReplacementNamed(context, '/');
+        break;
+      case 1:
+        Navigator.pushReplacementNamed(context, '/monitoring');
+        break;
+      case 2:
+        Navigator.pushReplacementNamed(context, '/user');
+        break;
+      case 3:
+        Navigator.pushReplacementNamed(context, '/report');
+        break;
+      case 4:
+        Navigator.pushReplacementNamed(context, '/guide');
+        break;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -130,6 +159,34 @@ class MonitoringPage extends StatelessWidget {
             ),
           ),
         ],
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.monitor),
+            label: 'Monitoring',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.people),
+            label: 'User',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.report),
+            label: 'Report',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.help),
+            label: 'Guide',
+          ),
+        ],
+        currentIndex: _selectedIndex,
+        selectedItemColor: Colors.teal,
+        unselectedItemColor: Colors.grey,
+        onTap: _onItemTapped,
       ),
     );
   }
