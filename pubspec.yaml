@@ -69,6 +69,11 @@ flutter:
     - web/assets/feature4.png
     - web/assets/yolo.gif
     - web/assets/ipad.png
+    - web/assets/python.png
+    - web/assets/javascrip.png
+    - web/assets/tailwind.png
+    - web/assets/python.png
+    - web/assets/react.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
