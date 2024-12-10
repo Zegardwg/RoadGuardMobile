@@ -1,6 +1,31 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'home.dart';
 
 class LoginPage extends StatelessWidget {
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+
+  Future<void> _handleLogin(BuildContext context) async {
+    // Simulasi proses login (ganti dengan autentikasi yang sebenarnya)
+    String email = _emailController.text;
+    String password = _passwordController.text;
+
+    if (email == 'user@example.com' && password == 'password123') {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      await prefs.setBool('isLoggedIn', true);
+
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => HomePage(isLoggedIn: true)),
+      );
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Invalid email or password')),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -10,13 +35,13 @@ class LoginPage extends StatelessWidget {
         leading: IconButton(
           icon: Icon(Icons.arrow_back, color: Colors.black),
           onPressed: () {
-            Navigator.pop(context); // Kembali ke halaman sebelumnya
+            Navigator.pop(context);
           },
         ),
         actions: [
           TextButton(
             onPressed: () {
-              Navigator.pushNamed(context, '/register'); // Navigasi ke halaman Register
+              Navigator.pushNamed(context, '/register');
             },
             child: Text(
               'Belum punya akun? Daftar',
@@ -42,21 +67,21 @@ class LoginPage extends StatelessWidget {
               ),
               SizedBox(height: 32),
               _buildTextField(
+                controller: _emailController,
                 icon: Icons.email_outlined,
                 hintText: 'Email',
                 isPassword: false,
               ),
               SizedBox(height: 16),
               _buildTextField(
+                controller: _passwordController,
                 icon: Icons.lock_outline,
                 hintText: 'Password',
                 isPassword: true,
               ),
               SizedBox(height: 32),
               ElevatedButton(
-                onPressed: () {
-                  // Tambahkan aksi login
-                },
+                onPressed: () => _handleLogin(context),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.teal,
                   minimumSize: Size(double.infinity, 50),
@@ -81,11 +106,13 @@ class LoginPage extends StatelessWidget {
   }
 
   Widget _buildTextField({
+    required TextEditingController controller,
     required IconData icon,
     required String hintText,
     required bool isPassword,
   }) {
     return TextField(
+      controller: controller,
       obscureText: isPassword,
       decoration: InputDecoration(
         prefixIcon: Icon(icon, color: Colors.teal),

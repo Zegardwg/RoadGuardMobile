@@ -27,8 +27,9 @@ class MyApp extends StatelessWidget {
         '/monitoring': (context) => MonitoringPage(),
         '/user': (context) => UserPage(),
         '/report': (context) => ReportPage(),
-        '/guide': (context) => GuidePage(), // Menambahkan route baru untuk panduan
+        '/guide': (context) => GuidePage(),
       },
     );
   }
 }
+
