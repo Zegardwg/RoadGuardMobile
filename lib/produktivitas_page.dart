@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class GuidePage extends StatelessWidget {
-  const GuidePage({Key? key}) : super(key: key);
+class ProduktivitasPage extends StatelessWidget {
+  const ProduktivitasPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Panduan Penggunaan'),
+        title: const Text('Produktivitas'),
         backgroundColor: Colors.teal,
         elevation: 0,
       ),
@@ -32,10 +32,10 @@ class GuidePage extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: const [
-                  Icon(Icons.help_outline, size: 100, color: Colors.white),
+                  Icon(Icons.bar_chart, size: 100, color: Colors.white),
                   SizedBox(height: 16),
                   Text(
-                    'Panduan Penggunaan',
+                    'Peningkatan Produktivitas',
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 24,
@@ -45,7 +45,7 @@ class GuidePage extends StatelessWidget {
                   ),
                   SizedBox(height: 8),
                   Text(
-                    'Langkah-langkah untuk menggunakan aplikasi dengan mudah.',
+                    'Kelola sumber daya dan tingkatkan efisiensi dengan mudah.',
                     style: TextStyle(color: Colors.white70, fontSize: 16),
                     textAlign: TextAlign.center,
                   ),
@@ -54,14 +54,14 @@ class GuidePage extends StatelessWidget {
             ),
             const SizedBox(height: 16),
 
-            // Langkah-Langkah
+            // Statistik Produktivitas
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const Text(
-                    'Langkah-Langkah',
+                    'Statistik Produktivitas',
                     style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
@@ -69,32 +69,13 @@ class GuidePage extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 16),
-                  _buildStepCard(
-                    step: '1',
-                    title: 'Mulai Deteksi',
-                    description:
-                        'Tekan tombol "Mulai Deteksi" di halaman utama untuk memulai proses deteksi lubang jalan.',
-                  ),
-                  const SizedBox(height: 16),
-                  _buildStepCard(
-                    step: '2',
-                    title: 'Ambil Foto',
-                    description:
-                        'Arahkan kamera ke jalan dan ambil foto untuk mengidentifikasi lubang.',
-                  ),
-                  const SizedBox(height: 16),
-                  _buildStepCard(
-                    step: '3',
-                    title: 'Hasil Analisis',
-                    description:
-                        'Lihat hasil analisis AI pada gambar untuk mengetahui lokasi dan tingkat bahaya lubang.',
-                  ),
-                  const SizedBox(height: 16),
-                  _buildStepCard(
-                    step: '4',
-                    title: 'Simpan atau Bagikan',
-                    description:
-                        'Simpan hasil deteksi atau bagikan ke platform lain untuk tindak lanjut.',
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      _buildStatCard('Proyek Aktif', '12', Colors.blue),
+                      _buildStatCard('Sumber Daya', '25%', Colors.orange),
+                      _buildStatCard('Efisiensi', '85%', Colors.green),
+                    ],
                   ),
                 ],
               ),
@@ -102,14 +83,14 @@ class GuidePage extends StatelessWidget {
 
             const SizedBox(height: 16),
 
-            // Tips Tambahan
+            // Fitur Produktivitas
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const Text(
-                    'Tips Tambahan',
+                    'Fitur Utama',
                     style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
@@ -117,22 +98,25 @@ class GuidePage extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 16),
-                  _buildTipCard(
-                    title: 'Gunakan Kamera yang Stabil',
+                  _buildFeatureCard(
+                    title: 'Manajemen Proyek',
                     description:
-                        'Pastikan kamera tidak goyang untuk hasil deteksi yang lebih akurat.',
+                        'Pantau kemajuan proyek secara real-time dengan dasbor interaktif.',
+                    icon: Icons.task,
                   ),
                   const SizedBox(height: 16),
-                  _buildTipCard(
-                    title: 'Pencahayaan yang Baik',
+                  _buildFeatureCard(
+                    title: 'Penjadwalan Otomatis',
                     description:
-                        'Pastikan kondisi jalan cukup terang untuk deteksi optimal.',
+                        'Hemat waktu dengan penjadwalan otomatis berdasarkan prioritas.',
+                    icon: Icons.schedule,
                   ),
                   const SizedBox(height: 16),
-                  _buildTipCard(
-                    title: 'Perbarui Aplikasi',
+                  _buildFeatureCard(
+                    title: 'Kolaborasi Tim',
                     description:
-                        'Selalu gunakan versi terbaru untuk performa terbaik.',
+                        'Bekerja sama dengan anggota tim untuk meningkatkan produktivitas.',
+                    icon: Icons.group,
                   ),
                 ],
               ),
@@ -145,8 +129,7 @@ class GuidePage extends StatelessWidget {
               padding: const EdgeInsets.all(16),
               child: ElevatedButton(
                 onPressed: () {
-                  // Logika untuk kembali ke halaman utama
-                  Navigator.pop(context);
+                  // Logika untuk mulai produktivitas
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.teal,
@@ -156,7 +139,7 @@ class GuidePage extends StatelessWidget {
                   ),
                 ),
                 child: const Text(
-                  'Kembali ke Beranda',
+                  'Mulai Tingkatkan Produktivitas',
                   style: TextStyle(fontSize: 18, color: Colors.white),
                 ),
               ),
@@ -167,10 +150,40 @@ class GuidePage extends StatelessWidget {
     );
   }
 
-  Widget _buildStepCard({
-    required String step,
+  Widget _buildStatCard(String title, String value, Color color) {
+    return Expanded(
+      child: Card(
+        elevation: 5,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+        child: Padding(
+          padding: const EdgeInsets.all(16),
+          child: Column(
+            children: [
+              Text(
+                value,
+                style: TextStyle(
+                  fontSize: 22,
+                  fontWeight: FontWeight.bold,
+                  color: color,
+                ),
+              ),
+              const SizedBox(height: 8),
+              Text(
+                title,
+                style: const TextStyle(fontSize: 14, color: Colors.black54),
+                textAlign: TextAlign.center,
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildFeatureCard({
     required String title,
     required String description,
+    required IconData icon,
   }) {
     return Card(
       elevation: 5,
@@ -181,57 +194,8 @@ class GuidePage extends StatelessWidget {
           children: [
             CircleAvatar(
               backgroundColor: Colors.teal.shade100,
-              child: Text(
-                step,
-                style: const TextStyle(
-                  color: Colors.teal,
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
+              child: Icon(icon, color: Colors.teal, size: 28),
             ),
-            const SizedBox(width: 16),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    title,
-                    style: const TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.teal,
-                    ),
-                  ),
-                  const SizedBox(height: 8),
-                  Text(
-                    description,
-                    style: const TextStyle(
-                      fontSize: 14,
-                      color: Colors.black54,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget _buildTipCard({
-    required String title,
-    required String description,
-  }) {
-    return Card(
-      elevation: 5,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-      child: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Row(
-          children: [
-            const Icon(Icons.lightbulb, color: Colors.teal, size: 28),
             const SizedBox(width: 16),
             Expanded(
               child: Column(

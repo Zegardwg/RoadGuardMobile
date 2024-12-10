@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class GuidePage extends StatelessWidget {
-  const GuidePage({Key? key}) : super(key: key);
+class IntegrasiPage extends StatelessWidget {
+  const IntegrasiPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Panduan Penggunaan'),
+        title: const Text('Integrasi Mudah'),
         backgroundColor: Colors.teal,
         elevation: 0,
       ),
@@ -32,10 +32,10 @@ class GuidePage extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: const [
-                  Icon(Icons.help_outline, size: 100, color: Colors.white),
+                  Icon(Icons.integration_instructions, size: 100, color: Colors.white),
                   SizedBox(height: 16),
                   Text(
-                    'Panduan Penggunaan',
+                    'Integrasi dengan Teknologi Modern',
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 24,
@@ -45,7 +45,7 @@ class GuidePage extends StatelessWidget {
                   ),
                   SizedBox(height: 8),
                   Text(
-                    'Langkah-langkah untuk menggunakan aplikasi dengan mudah.',
+                    'Kompatibel dengan framework dan bahasa pemrograman modern.',
                     style: TextStyle(color: Colors.white70, fontSize: 16),
                     textAlign: TextAlign.center,
                   ),
@@ -54,14 +54,14 @@ class GuidePage extends StatelessWidget {
             ),
             const SizedBox(height: 16),
 
-            // Langkah-Langkah
+            // Teknologi Pendukung
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const Text(
-                    'Langkah-Langkah',
+                    'Teknologi Pendukung',
                     style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
@@ -69,32 +69,28 @@ class GuidePage extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 16),
-                  _buildStepCard(
-                    step: '1',
-                    title: 'Mulai Deteksi',
-                    description:
-                        'Tekan tombol "Mulai Deteksi" di halaman utama untuk memulai proses deteksi lubang jalan.',
+                  _buildTechCard(
+                    icon: Icons.code,
+                    title: 'React',
+                    description: 'Framework modern untuk membangun antarmuka pengguna yang interaktif.',
                   ),
                   const SizedBox(height: 16),
-                  _buildStepCard(
-                    step: '2',
-                    title: 'Ambil Foto',
-                    description:
-                        'Arahkan kamera ke jalan dan ambil foto untuk mengidentifikasi lubang.',
+                  _buildTechCard(
+                    icon: Icons.storage,
+                    title: 'Node.js',
+                    description: 'Platform JavaScript untuk pengembangan backend yang cepat dan skalabel.',
                   ),
                   const SizedBox(height: 16),
-                  _buildStepCard(
-                    step: '3',
-                    title: 'Hasil Analisis',
-                    description:
-                        'Lihat hasil analisis AI pada gambar untuk mengetahui lokasi dan tingkat bahaya lubang.',
+                  _buildTechCard(
+                    icon: Icons.style,
+                    title: 'Tailwind CSS',
+                    description: 'Framework utility-first CSS untuk styling yang fleksibel dan cepat.',
                   ),
                   const SizedBox(height: 16),
-                  _buildStepCard(
-                    step: '4',
-                    title: 'Simpan atau Bagikan',
-                    description:
-                        'Simpan hasil deteksi atau bagikan ke platform lain untuk tindak lanjut.',
+                  _buildTechCard(
+                    icon: Icons.analytics,
+                    title: 'Python',
+                    description: 'Bahasa pemrograman serbaguna untuk analisis data, AI, dan automasi.',
                   ),
                 ],
               ),
@@ -102,14 +98,14 @@ class GuidePage extends StatelessWidget {
 
             const SizedBox(height: 16),
 
-            // Tips Tambahan
+            // Keunggulan
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const Text(
-                    'Tips Tambahan',
+                    'Keunggulan Integrasi',
                     style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
@@ -117,22 +113,19 @@ class GuidePage extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 16),
-                  _buildTipCard(
-                    title: 'Gunakan Kamera yang Stabil',
-                    description:
-                        'Pastikan kamera tidak goyang untuk hasil deteksi yang lebih akurat.',
+                  _buildFeatureItem(
+                    title: 'Dokumentasi Lengkap',
+                    description: 'Dokumentasi yang mudah diikuti untuk mempermudah implementasi.',
                   ),
                   const SizedBox(height: 16),
-                  _buildTipCard(
-                    title: 'Pencahayaan yang Baik',
-                    description:
-                        'Pastikan kondisi jalan cukup terang untuk deteksi optimal.',
+                  _buildFeatureItem(
+                    title: 'API Fleksibel',
+                    description: 'Mendukung berbagai kebutuhan pengembangan dengan API RESTful.',
                   ),
                   const SizedBox(height: 16),
-                  _buildTipCard(
-                    title: 'Perbarui Aplikasi',
-                    description:
-                        'Selalu gunakan versi terbaru untuk performa terbaik.',
+                  _buildFeatureItem(
+                    title: 'Kompatibilitas Tinggi',
+                    description: 'Dapat digunakan dengan berbagai platform dan bahasa pemrograman.',
                   ),
                 ],
               ),
@@ -140,13 +133,12 @@ class GuidePage extends StatelessWidget {
 
             const SizedBox(height: 16),
 
-            // CTA Button
+            // Call to Action
             Padding(
               padding: const EdgeInsets.all(16),
               child: ElevatedButton(
                 onPressed: () {
-                  // Logika untuk kembali ke halaman utama
-                  Navigator.pop(context);
+                  // Logika untuk integrasi
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.teal,
@@ -156,7 +148,7 @@ class GuidePage extends StatelessWidget {
                   ),
                 ),
                 child: const Text(
-                  'Kembali ke Beranda',
+                  'Pelajari Lebih Lanjut',
                   style: TextStyle(fontSize: 18, color: Colors.white),
                 ),
               ),
@@ -167,8 +159,8 @@ class GuidePage extends StatelessWidget {
     );
   }
 
-  Widget _buildStepCard({
-    required String step,
+  Widget _buildTechCard({
+    required IconData icon,
     required String title,
     required String description,
   }) {
@@ -181,14 +173,7 @@ class GuidePage extends StatelessWidget {
           children: [
             CircleAvatar(
               backgroundColor: Colors.teal.shade100,
-              child: Text(
-                step,
-                style: const TextStyle(
-                  color: Colors.teal,
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
+              child: Icon(icon, color: Colors.teal, size: 28),
             ),
             const SizedBox(width: 16),
             Expanded(
@@ -220,44 +205,20 @@ class GuidePage extends StatelessWidget {
     );
   }
 
-  Widget _buildTipCard({
-    required String title,
-    required String description,
-  }) {
+  Widget _buildFeatureItem({required String title, required String description}) {
     return Card(
       elevation: 5,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-      child: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Row(
-          children: [
-            const Icon(Icons.lightbulb, color: Colors.teal, size: 28),
-            const SizedBox(width: 16),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    title,
-                    style: const TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.teal,
-                    ),
-                  ),
-                  const SizedBox(height: 8),
-                  Text(
-                    description,
-                    style: const TextStyle(
-                      fontSize: 14,
-                      color: Colors.black54,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
+      child: ListTile(
+        leading: CircleAvatar(
+          backgroundColor: Colors.teal.shade100,
+          child: const Icon(Icons.check, color: Colors.teal),
         ),
+        title: Text(
+          title,
+          style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+        ),
+        subtitle: Text(description),
       ),
     );
   }
