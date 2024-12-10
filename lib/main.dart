@@ -5,6 +5,7 @@ import 'register.dart';
 import 'monitoring.dart';
 import 'user.dart';
 import 'report.dart';
+import 'guide.dart';
 
 void main() {
   runApp(MyApp());
@@ -14,9 +15,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Multi Page App',
+      title: 'RoadGuard - Pendeteksi Lubang Jalan',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.teal,
       ),
       initialRoute: '/',
       routes: {
@@ -26,6 +27,7 @@ class MyApp extends StatelessWidget {
         '/monitoring': (context) => MonitoringPage(),
         '/user': (context) => UserPage(),
         '/report': (context) => ReportPage(),
+        '/guide': (context) => GuidePage(), // Menambahkan route baru untuk panduan
       },
     );
   }

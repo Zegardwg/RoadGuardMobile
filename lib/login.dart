@@ -7,23 +7,19 @@ class LoginPage extends StatelessWidget {
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.white,
-        leading: TextButton.icon(
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back, color: Colors.black),
           onPressed: () {
             Navigator.pop(context); // Kembali ke halaman sebelumnya
           },
-          icon: Icon(Icons.arrow_back, color: Colors.black),
-          label: Text(
-            'Return Home',
-            style: TextStyle(color: Colors.black, fontSize: 12),
-          ),
         ),
         actions: [
           TextButton(
             onPressed: () {
-              Navigator.pushNamed(context, '/register'); // Navigasi ke halaman register
+              Navigator.pushNamed(context, '/register'); // Navigasi ke halaman Register
             },
             child: Text(
-              'Belum Bikin Akun? CREATE NOW',
+              'Belum punya akun? Daftar',
               style: TextStyle(color: Colors.teal, fontSize: 12),
             ),
           ),
@@ -34,79 +30,48 @@ class LoginPage extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              SizedBox(height: MediaQuery.of(context).size.height * 0.1), // Ruang atas proporsional
-              Center(
-                child: Column(
-                  children: [
-                    Text(
-                      'BECOME AN EXCLUSIVE\nROAD GUARD',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    SizedBox(height: 8),
-                    Text(
-                      'LOG IN TO CONTINUE',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: Colors.grey,
-                      ),
-                    ),
-                  ],
-                ),
+              SizedBox(height: MediaQuery.of(context).size.height * 0.1),
+              Text(
+                'Welcome Back!',
+                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
               ),
-              SizedBox(height: MediaQuery.of(context).size.height * 0.05), // Ruang antara teks dan field
+              SizedBox(height: 16),
+              Text(
+                'Log in to continue',
+                style: TextStyle(fontSize: 16, color: Colors.grey),
+              ),
+              SizedBox(height: 32),
               _buildTextField(
                 icon: Icons.email_outlined,
-                hintText: 'example@email.com',
+                hintText: 'Email',
                 isPassword: false,
               ),
               SizedBox(height: 16),
               _buildTextField(
                 icon: Icons.lock_outline,
-                hintText: '********',
+                hintText: 'Password',
                 isPassword: true,
               ),
-              SizedBox(height: MediaQuery.of(context).size.height * 0.05),
+              SizedBox(height: 32),
               ElevatedButton(
                 onPressed: () {
-                  // Tambahkan logika untuk login
+                  // Tambahkan aksi login
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.teal,
-                  foregroundColor: Colors.white,
                   minimumSize: Size(double.infinity, 50),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8),
                   ),
                 ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text('Proceed to my Account'),
-                    Icon(Icons.arrow_forward),
-                  ],
-                ),
+                child: Text('Log In'),
               ),
-              SizedBox(height: MediaQuery.of(context).size.height * 0.05),
-              Align(
-                alignment: Alignment.center,
-                child: TextButton.icon(
-                  onPressed: () {
-                    // Tambahkan aksi untuk bantuan
-                  },
-                  icon: Icon(
-                    Icons.help_outline,
-                    color: Colors.grey,
-                  ),
-                  label: Text(
-                    'Need help?',
-                    style: TextStyle(color: Colors.grey),
-                  ),
-                ),
+              SizedBox(height: 16),
+              TextButton(
+                onPressed: () {
+                  // Tambahkan aksi untuk Forgot Password
+                },
+                child: Text('Forgot Password?', style: TextStyle(color: Colors.grey)),
               ),
             ],
           ),
@@ -125,21 +90,12 @@ class LoginPage extends StatelessWidget {
       decoration: InputDecoration(
         prefixIcon: Icon(icon, color: Colors.teal),
         hintText: hintText,
-        hintStyle: TextStyle(color: Colors.grey),
         filled: true,
         fillColor: Colors.grey.shade200,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),
           borderSide: BorderSide.none,
         ),
-        suffixIcon: isPassword
-            ? IconButton(
-                icon: Icon(Icons.visibility_outlined, color: Colors.grey),
-                onPressed: () {
-                  // Tambahkan aksi untuk toggle password visibility
-                },
-              )
-            : null,
       ),
     );
   }
