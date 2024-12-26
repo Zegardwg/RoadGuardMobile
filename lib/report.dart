@@ -61,7 +61,7 @@ class _ReportPageState extends State<ReportPage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: const [
                     Text(
-                      'Laporan Mingguan',
+                      'Laporan Mingguans',
                       style: TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
@@ -83,9 +83,9 @@ class _ReportPageState extends State<ReportPage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  _buildStatCard('Lubang Baru', '45', Colors.red),
-                  _buildStatCard('Dalam Perbaikan', '15', Colors.orange),
-                  _buildStatCard('Sudah Diperbaiki', '30', Colors.green),
+                  _buildStatCard('Lubang Baru', '0', Colors.red),
+                  _buildStatCard('Dalam Perbaikan', '0', Colors.orange),
+                  _buildStatCard('Sudah Diperbaiki', '0', Colors.green),
                 ],
               ),
               const SizedBox(height: 16),
